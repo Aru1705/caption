@@ -1,0 +1,111 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background: black;
+    overflow: hidden;
+
+}
+.container{
+    height: 400px;
+    width: 700px;
+    margin: 100px auto;
+    overflow: hidden;
+    position: relative;
+    perspective: 1000px;
+    -webkit-box-reflect: below opx linear-gradient(transparent,transparent, #0004);
+
+}
+.container .sliders{
+    height: 100%;
+    width: 500%;
+    display: flex;
+
+}
+.container .sliders > img{
+    height: 100%;
+    width: 20%;
+    object-fit: cover;
+    transition: 2s ease-in;
+}
+.container .sliders > img ~ img{
+    transform: rotateY(65deg);
+}
+
+input{
+    display: none;
+}
+.controls{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 50px;
+    width: 200px;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: .2s;
+}
+.container:hover .controls{
+    transform: scaleY(1);
+}
+.controls > label{
+    height: 25px;
+    width: 25px;
+    background:white;
+    border-radius: 50%;
+    margin: 5px;
+}
+.controls > label:hover{
+    cursor: pointer;
+    transition: 2s;
+    box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 5) inset,
+                 0px 0px 0px 3px white;
+}
+.caption > .content{
+    position: absolute;
+    bottom: 40px;
+    right: 0px;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 10px;
+    font-family: sans-serif;
+    text-align: right;
+    transform: translateX(200px);
+    transition: .2s;
+}
+
+#r1:checked ~ .container .sliders img:nth-child(1){
+    margin-left: -0%;
+}
+#r2:checked ~ .container .sliders img:nth-child(1){
+    margin-left: -20%;
+}
+#r3:checked ~ .container .sliders img:nth-child(1){
+    margin-left: -40%;
+}
+#r4:checked ~ .container .sliders img:nth-child(1){
+    margin-left: -60%;
+}
+#r5:checked ~ .container .sliders img:nth-child(1){
+    margin-left: -80%;
+}
+#r1:checked ~ .container .sliders img:nth-child(1),
+#r2:checked ~ .container .sliders img:nth-child(2),
+#r3:checked ~ .container .sliders img:nth-child(3),
+#r4:checked ~ .container .sliders img:nth-child(4),
+#r5:checked ~ .container .sliders img:nth-child(5){
+    transform: rotateY(0deg)
+}
+#r1:checked ~ .container .caption .content:nth-child(1),
+#r2:checked ~ .container .caption .content:nth-child(2),
+#r3:checked ~ .container .caption .content:nth-child(3),
+#r4:checked ~ .container .caption .content:nth-child(4),
+#r5:checked ~ .container .caption .content:nth-child(5){
+    transform: translateX(0px)
+
+}
